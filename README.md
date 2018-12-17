@@ -24,5 +24,5 @@ npm run build
 
 Run the script.
 ```
-npm run start
+npm start
 ```
