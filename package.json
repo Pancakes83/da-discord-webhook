@@ -13,7 +13,7 @@
   "author": "",
   "license": "ISC",
   "dependencies": {
-    "darkages": "^1.0.3"
+    "darkages": "^1.0.4"
   },
   "devDependencies": {
     "babel-cli": "^6.26.0",
