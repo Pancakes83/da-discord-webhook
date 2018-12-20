@@ -16,9 +16,10 @@ Clone this repository.
 git clone https://github.com/ericvaladas/da-discord-webhook.git
 ```
 
-Build.
+Install and build.
 ```
 cd da-discord-webhook
+npm install
 npm run build
 ```
 
