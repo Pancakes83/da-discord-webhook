@@ -15,7 +15,6 @@ client.events.on(0x0A, packet => {
   const type = packet.readByte();
   const message = packet.readString16();
 
-  if {
     const gmAnnounced = (
       message.startsWith('[Error]') ||
       message.startsWith('[Trial]') ||
@@ -42,7 +41,7 @@ client.events.on(0x0A, packet => {
     else {
       webhook.send(message)
     }
-  }
+  
 });
 
 client.connect();
