@@ -15,7 +15,7 @@ client.events.on(0x0A, packet => {
   const type = packet.readByte();
   const message = packet.readString16();
 
-  if (type === 5) {
+  if {
     const gmAnnounced = (
       message.startsWith('[Error]') ||
       message.startsWith('[Trial]') ||
