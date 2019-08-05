@@ -1,7 +1,7 @@
 import { Client } from 'darkages';
 import Webhook from './discord';
 
-const { USERNAME, PASSWORD, WEBHOOK, CLASS1, CLASS2 } = process.env;
+const { USERNAME, PASSWORD, WEBHOOK, WEBHOOK2, WEBHOOK3, WEBHOOK4, WEBHOOK5, CLASS1, CLASS2 } = process.env;
 const client = new Client(USERNAME, PASSWORD);
 const webhook = new Webhook(WEBHOOK);
 const webhook2 = new Webhook(WEBHOOK2);
