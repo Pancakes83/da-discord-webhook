@@ -42,6 +42,7 @@ client.events.on(0x0A, packet => {
     else {
       webhook.send(message)
     }
+  }
 });
 
 client.connect();
