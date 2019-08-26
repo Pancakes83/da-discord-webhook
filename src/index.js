@@ -18,7 +18,10 @@ client.events.on(0x0A, packet => {
     const gmAnnounced = (
       message.startsWith('[Error]') ||
       message.startsWith('[Trial]') ||
-      message.startsWith('[Ishikawa]')
+      message.startsWith('[Ishikawa]') ||
+      message.startsWith('Ishikawa!') ||
+      message.startsWith('Error!') ||
+      message.startsWith('Trial!')
     );
     const classAnnounced = (
       message.includes('will be teaching') &&
@@ -27,21 +30,27 @@ client.events.on(0x0A, packet => {
     const entryPosted = (
       message.includes('will be posting an entry in the Contest Hall for review.')
       );
+  const notify = (
+      message.includes('@everyone') ||
+      message.includes('@here') 
+      );
 
-    if (gmAnnounced) {
+  if (notify) {
+      //do nothing
+  }
+    else if (gmAnnounced) {
       webhook3.send(message);
     }
     else if (classAnnounced) {
-      webhook2.send(CLASS1 + message) &&
-      webhook5.send(CLASS2 + message);
+      webhook2.send(CLASS1 + " " + message) &&
+      webhook5.send(CLASS2 + " " + message);
                     }
      else if (entryPosted) {
-        webhook4.send("@everyone" + message)
-      }
+        webhook4.send("@everyone " + message);
+     }
     else {
-      webhook.send(message)
+      webhook.send(message);
     }
-  
 });
 
 client.connect();
