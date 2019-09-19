@@ -8,7 +8,7 @@ const webhook2 = new Webhook(WEBHOOK2);
 const webhook3 = new Webhook(WEBHOOK3);
 const webhook4 = new Webhook(WEBHOOK4);
 const webhook5 = new Webhook(WEBHOOK5);
-
+const webhook6 = new Webhook(WEBHOOK6);
 
 
 client.events.on(0x0A, packet => {
@@ -21,6 +21,7 @@ client.events.on(0x0A, packet => {
       message.startsWith('[Ishikawa]') ||
       message.startsWith('Ishikawa!') ||
       message.startsWith('Error!') ||
+      message.startsWith('And!') ||
       message.startsWith('Trial!')
     );
     const classAnnounced = (
@@ -34,6 +35,12 @@ client.events.on(0x0A, packet => {
       message.includes('@everyone') ||
       message.includes('@here') 
       );
+    const battleAnnounced = (
+      message.startsWith('Host') ||
+      message.startsWith('The Balanced Arena')
+    );
+
+    
 
   if (notify) {
       //do nothing
@@ -48,6 +55,9 @@ client.events.on(0x0A, packet => {
      else if (entryPosted) {
         webhook4.send("@everyone " + message);
      }
+  else if (battleAnnounced) {
+      webhook6.send(message);
+    }
     else {
       webhook.send(message);
     }
