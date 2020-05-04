@@ -1,7 +1,7 @@
 import { Client } from 'darkages';
 import Webhook from './discord';
 
-const { USERNAME, PASSWORD, WEBHOOK, WEBHOOK2, WEBHOOK3, WEBHOOK4, WEBHOOK5, WEBHOOK6, CLASS1, CLASS2 } = process.env;
+const { USERNAME, PASSWORD, WEBHOOK, WEBHOOK2, WEBHOOK3, WEBHOOK4, WEBHOOK5, WEBHOOK6, CLASS1, CLASS2, CLASS3 } = process.env;
 const client = new Client(USERNAME, PASSWORD);
 const webhook = new Webhook(WEBHOOK);
 const webhook2 = new Webhook(WEBHOOK2);
@@ -16,9 +16,6 @@ client.events.on(0x0A, packet => {
   const message = packet.readString16();
 
     const gmAnnounced = (
-      message.startsWith('[Error]') ||
-      message.startsWith('[Trial]') ||
-      message.startsWith('[Ishikawa]') ||
       message.startsWith('Ishikawa!') ||
       message.startsWith('Error!') ||
       message.startsWith('And!') ||
@@ -36,8 +33,7 @@ client.events.on(0x0A, packet => {
       message.includes('@here') 
       );
     const battleAnnounced = (
-      message.startsWith('Host') ||
-      message.startsWith('The Balanced Arena')
+      message.startsWith('Host')
     );
 
     
@@ -56,7 +52,7 @@ client.events.on(0x0A, packet => {
         webhook4.send("@everyone " + message);
      }
   else if (battleAnnounced) {
-      webhook6.send(message);
+      webhook6.send(CLASS3 + " " + message);
     }
     else {
       webhook.send(message);
