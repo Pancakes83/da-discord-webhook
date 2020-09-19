@@ -20,7 +20,7 @@ client.events.on(0x0A, packet => {
       message.startsWith('Error!') ||
       message.startsWith('And!') ||
       message.startsWith('Trial!')
-    );
+      );
     const classAnnounced = (
       message.includes('will be teaching') &&
       message.includes('at the Mileth College.')
@@ -28,13 +28,16 @@ client.events.on(0x0A, packet => {
     const entryPosted = (
       message.includes('will be posting an entry in the Contest Hall for review.')
       );
-  const notify = (
+    const notify = (
       message.includes('@everyone') ||
       message.includes('@here') 
       );
+    const massAnnounced = (
+      message.includes('is reading Mass at the Shrine of')
+      );
     const battleAnnounced = (
       message.startsWith('Host')
-    );
+      );
 
     
 
@@ -45,13 +48,15 @@ client.events.on(0x0A, packet => {
       webhook3.send(message);
     }
     else if (classAnnounced) {
-      webhook2.send(CLASS1 + " " + message) &&
-      webhook5.send(CLASS2 + " " + message);
-                    }
-     else if (entryPosted) {
-        webhook4.send("@everyone " + message);
+      webhook2.send(CLASS1 + " " + message)
+    }
+    else if (massAnnounced) {
+      webhook5.send(CLASS2 + " " + message)
+    }
+    else if (entryPosted) {
+      webhook4.send("@everyone " + message);
      }
-  else if (battleAnnounced) {
+    else if (battleAnnounced) {
       webhook6.send(CLASS3 + " " + message);
     }
     else {
