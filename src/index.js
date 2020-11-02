@@ -1,7 +1,7 @@
 import { Client } from 'darkages';
 import Webhook from './discord';
 
-const { USERNAME, PASSWORD, WEBHOOK, WEBHOOK2, WEBHOOK3, WEBHOOK4, WEBHOOK5, WEBHOOK6, CLASS1, CLASS2, CLASS3 } = process.env;
+const { USERNAME, PASSWORD, WEBHOOK, WEBHOOK2, WEBHOOK3, WEBHOOK4, WEBHOOK5, WEBHOOK6, WEBHOOK7, CLASS1, CLASS2, CLASS3 } = process.env;
 const client = new Client(USERNAME, PASSWORD);
 const webhook = new Webhook(WEBHOOK);
 const webhook2 = new Webhook(WEBHOOK2);
@@ -9,6 +9,7 @@ const webhook3 = new Webhook(WEBHOOK3);
 const webhook4 = new Webhook(WEBHOOK4);
 const webhook5 = new Webhook(WEBHOOK5);
 const webhook6 = new Webhook(WEBHOOK6);
+const webhook7 = new Webhook(WEBHOOK7);
 
 
 client.events.on(0x0A, packet => {
@@ -38,7 +39,9 @@ client.events.on(0x0A, packet => {
     const battleAnnounced = (
       message.startsWith('Host')
       );
-
+   const contestReminder = (
+      message.includes('has an open entry for review at the Mileth College.')
+      );
     
 
   if (notify) {
@@ -58,6 +61,9 @@ client.events.on(0x0A, packet => {
      }
     else if (battleAnnounced) {
       webhook6.send(CLASS3 + " " + message);
+    }
+ else if (contestReminder) {
+      webhook7.send("Open Entry Reminder: " + message);
     }
     else {
       webhook.send(message);
