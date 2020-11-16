@@ -42,11 +42,17 @@ client.events.on(0x0A, packet => {
    const contestReminder = (
       message.includes('has an open entry for review at the Mileth College.')
       );
+     const link = (
+      message.includes('http')
+      );
     
 
   if (notify) {
       //do nothing
   }
+  else if (link) {
+     //do nothing
+    }
     else if (gmAnnounced) {
       webhook3.send(message);
     }
